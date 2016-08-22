@@ -1,4 +1,5 @@
 class Temperature
+
   def initialize(temperature)
     @temp   = 0
     @key    = ""
@@ -47,7 +48,15 @@ end
 
 class Fahrenheit < Temperature
 
+  def initialize(temperature)
+    @key = :f
+    @temp = temperature
+  end
+
 end
 class Celsius < Temperature
-
+  def initialize(temperature)
+    @key = :c
+    @temp = temperature
+  end
 end
