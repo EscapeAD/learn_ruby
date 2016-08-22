@@ -1,23 +1,42 @@
 
 
-def translate(phrase)
-  vowels         = ["a","e","i","o","u"]
-  array          = phrase.split(" ")
-  original_array = array
+def translate(sentence)
+  vowels         = ["a","e","i","o"]
+  alph           = ("a".."z").to_a - vowels
+  array          = sentence.split(" ")
   output         = []
-
-  array.each_with_index do | word , i|
-    final          = ""
-    check = word.split(//)
-  if vowels.include? check[0]
-    final = phrase + "ay"
-    output.push(final)
-    
-
-  end
+  translation    = ""
+  # con            = alph.select { |con| con =~ /[aeiou]/ }
+  # con            = alph.select { |v| v != vowels }
+  if array.count == 1
+    one          = array[0].split(//)
+    if vowels.include? one[0]
+      translation = sentence + "ay"
+    elsif vowels.include? one[1]
+      translation = one.drop(1).join + one.first + "ay"
+    elsif vowels.include? one[2]
+      translation = one.drop(2).join + one.first(2).join + "ay"
+    elsif vowels.include? one[3]
+      translation = one.drop(3).join + one.first(3).join + "ay"
+    end
+  else
+    # array.each do |word|
+    # final          = []
+    # check = word.split(//)
+    # output << check
+    # if alph.include? word.check[0] && alph.include? word[1] && alph.include? word[2]
+    #   output << check[0..2]
+    # elsif alph.include? word[0] && alph.include? word[1]
+    #   output << check[0..1]
+    # elsif alph.include? word[0]
+    #   output << check[0]
+    # end
 end
 
-  translation = output.join
+
+  #
+  # translation = output.join
+  # return translation
   return translation
 end
 
